@@ -81,10 +81,22 @@
 
 ## Report Feature
 
+```
+
 Period | Total Income | Total Spent | Total Saved
 ------------- | -------------  |
 March         | 3000.00 | 1200.00 | 2800.00
 
 TransactionID| Amount | Description | Photo
 ------------- | -------------  |
-March         | 30.00 | Groceries | Photo
+122  | 30.00 | Groceries | Photo
+123  | 20.00 | Gas | Photo
+124  | 100.00 | Insurance | Photo
+
+
+Twenty | Thirty| Fifty | Remaining
+------------- | -------------  |
+600.00       | 54.23 | 100.10 | 754.23
+
+```
+

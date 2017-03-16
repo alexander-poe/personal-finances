@@ -1,15 +1,14 @@
-CREATE TABLE Check (
-    ID int,
+CREATE TABLE Checks (
+    ID serial primary key,
     Amount int,
     DateDeposited DATE,
     Description varchar(255),
     Picture varchar(255),
-    Reoccuring BOOLEAN,
-    PRIMARY KEY (ID)
+    Reoccuring BOOLEAN
 );
 
 CREATE TABLE CheckTerm (
-    ID int primary key,
+    ID serial primary key,
     CheckID int references CHECKS(ID),
     Twenty int,
     Thirty int,
@@ -17,17 +16,9 @@ CREATE TABLE CheckTerm (
   );
 
   CREATE TABLE TermTransactions (
-      ID int primary key,
+      ID serial primary key,
       CheckTermID int references CheckTerm(ID),
       Transaction int,
       Description varchar(255),
       Photo varchar(255),
-  );
-
-  CREATE TABLE CheckTerm (
-    ID int primary key,
-    CheckID int references CHECKS(ID),
-    Twenty int,
-    Thirty int,
-    Fifty int
   );

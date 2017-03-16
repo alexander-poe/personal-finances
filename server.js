@@ -40,11 +40,11 @@ app.use(bodyParser.json());
 
 app.post('/checks', (req, res) => {
   knex.insert({
-    amount: req.body.Amount,
+    amount: req.body.amount,
     datedeposited: new Date(),
-    description: req.body.Description,
-    picture: req.body.Picture,
-    reoccuring: req.body.Reoccuring
+    description: req.body.description,
+    picture: req.body.picture,
+    reoccuring: req.body.reoccuring
   }).into('checks').then(id => {
     return res.status(201).json({id})
   }).catch(e => {

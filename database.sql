@@ -20,5 +20,5 @@ CREATE TABLE CheckTerm (
       CheckTermID int references CheckTerm(ID),
       Transaction int,
       Description varchar(255),
-      Photo varchar(255),
+      Photo varchar(255)
   );

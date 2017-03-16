@@ -65,18 +65,18 @@
 ## Routes
 
 1. Check
-  1. User adds check
-  2. User deletes check
+    1. User adds check
+    2. User deletes check
 
 2. CheckTerm
-  1. Computer adds term
-  2. Computer modifies when user inputs transaction
-  3. Computer fetches CheckTerm
+    1. Computer adds term
+    2. Computer modifies when user inputs transaction
+    3. Computer fetches CheckTerm
 
 3. Transactions
-  1. User adds transaction
-  2. User fetches transactions
-  3. User deletes transactions
+    1. User adds transaction
+    2. User fetches transactions
+    3. User deletes transactions
 
 ## Report Feature
 

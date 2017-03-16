@@ -9,18 +9,25 @@ CREATE TABLE Check (
 );
 
 CREATE TABLE CheckTerm (
-    ID int NOT NULL AUTO_INCREMENT,
-    CheckID int FOREIGN KEY REFERENCES CHECKS(ID),
+    ID int primary key,
+    CheckID int references CHECKS(ID),
     Twenty int,
     Thirty int,
-    Fifty int,
+    Fifty int
   );
 
   CREATE TABLE TermTransactions (
-      ID int NOT NULL AUTO_INCREMENT,
-      CheckTermID int FOREIGN KEY REFERENCES CheckTerm(ID),
+      ID int primary key,
+      CheckTermID int references CheckTerm(ID),
       Transaction int,
       Description varchar(255),
       Photo varchar(255),
-      PRIMARY KEY (ID)
+  );
+
+  CREATE TABLE CheckTerm (
+    ID int primary key,
+    CheckID int references CHECKS(ID),
+    Twenty int,
+    Thirty int,
+    Fifty int
   );

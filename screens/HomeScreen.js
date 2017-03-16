@@ -15,6 +15,15 @@ import { MonoText } from '../components/StyledText';
 
 
 export default class HomeScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      amount: 0,
+      description: '',
+      picture: '',
+      reoccuring: false
+    }
+  }
   static route = {
     navigationBar: {
       visible: false,
@@ -22,6 +31,7 @@ export default class HomeScreen extends React.Component {
   };
 
   render() {
+    console.log(this.state.amount)
     return (
       <View style={styles.container}>
         <ScrollView
@@ -52,17 +62,35 @@ export default class HomeScreen extends React.Component {
                 styles.homeScreenFilename,
               ]}>
               <MonoText style={styles.codeHighlightText}>
+                <Text> Amount : </Text>
                 <TextInput
                   type="number"
                   style={{height: 35, width: 200, textAlign: 'center'}}
                   placeholder="$ 00.00"
-                  onChangeText={(text) => this.setState({text})}
+                  onChangeText={(text) => this.setState({amount: text})}
+                />
+              <Text> Description : </Text>
+                <TextInput
+                  type="number"
+                  style={{height: 35, width: 200, textAlign: 'center'}}
+                  placeholder=" rent "
+                  onChangeText={(text) => this.setState({description: text})}
+                />
+              <Text> Photo : </Text>
+                <TextInput
+                  type="number"
+                  style={{height: 35, width: 200, textAlign: 'center'}}
+                  placeholder=" picture "
+                  onChangeText={(text) => this.setState({photo: text})}
+                />
+              <Text> Reoccuring : </Text>
+                <TextInput
+                  type="number"
+                  style={{height: 35, width: 200, textAlign: 'center'}}
+                  placeholder=" yes no "
+                  onChangeText={(text) => this.setState({reoccuring: text})}
                 />
               </MonoText>
-            </View>
-            <View
-              style={{width: 300, height: 400, backgroundColor: 'grey'}}>
-
             </View>
           </View>
         </ScrollView>

@@ -78,6 +78,19 @@
     2. User fetches transactions
     3. User deletes transactions
 
+## TODO (feature based)   
+
+1. Create Store, Reducer and Action
+
+1. Add check feature
+    1. user inputs
+        1. Amount
+        2. Description
+        3. Picture
+        4. Reoccuring (y / n)
+    2. input dispatched in action
+    3. action calls server route /check  
+
 ## Report Feature
 
 ```

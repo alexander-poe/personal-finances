@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Button,
   Image,
   Linking,
   Platform,
@@ -23,12 +24,17 @@ export default class HomeScreen extends React.Component {
       picture: '',
       reoccuring: false
     }
+    this.sendCheck = this.sendCheck.bind(this);
   }
   static route = {
     navigationBar: {
       visible: false,
     },
   };
+
+  sendCheck() {
+  
+  }
 
   render() {
     console.log(this.state.amount)
@@ -69,21 +75,21 @@ export default class HomeScreen extends React.Component {
                   placeholder="$ 00.00"
                   onChangeText={(text) => this.setState({amount: text})}
                 />
-              <Text> Description : </Text>
+                <Text> Description : </Text>
                 <TextInput
                   type="number"
                   style={{height: 35, width: 200, textAlign: 'center'}}
                   placeholder=" rent "
                   onChangeText={(text) => this.setState({description: text})}
                 />
-              <Text> Photo : </Text>
+                <Text> Photo : </Text>
                 <TextInput
                   type="number"
                   style={{height: 35, width: 200, textAlign: 'center'}}
                   placeholder=" picture "
                   onChangeText={(text) => this.setState({photo: text})}
                 />
-              <Text> Reoccuring : </Text>
+                <Text> Reoccuring : </Text>
                 <TextInput
                   type="number"
                   style={{height: 35, width: 200, textAlign: 'center'}}
@@ -91,6 +97,13 @@ export default class HomeScreen extends React.Component {
                   onChangeText={(text) => this.setState({reoccuring: text})}
                 />
               </MonoText>
+              <Button
+                onPress={this.sendCheck}
+                style={{height: 35, width: 75, textAlign: 'center'}}
+                title="Submit"
+                color="#841584"
+                accessibilityLabel="Submit"
+              />
             </View>
           </View>
         </ScrollView>

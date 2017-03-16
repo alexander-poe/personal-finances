@@ -3,32 +3,31 @@
 
 ## DB STRUCTURE
   ```sql
-  CREATE TABLE Check (
-      ID int,
+  CREATE TABLE Checks (
+      ID serial primary key,
       Amount int,
       DateDeposited DATE,
       Description varchar(255),
       Picture varchar(255),
-      Reoccuring BOOLEAN,
-      PRIMARY KEY (ID)
+      Reoccuring BOOLEAN
   );
 
   CREATE TABLE CheckTerm (
-      ID int NOT NULL AUTO_INCREMENT,
-      CheckID int FOREIGN KEY REFERENCES CHECK(ID),
+      ID serial primary key,
+      CheckID int references CHECKS(ID),
       Twenty int,
       Thirty int,
-      Fifty int,
-    );
+      Fifty int
+  );
 
-    CREATE TABLE Transactions (
-        ID int NOT NULL AUTO_INCREMENT,
-        CheckTermID int FOREIGN KEY REFERENCES CheckTerm(ID),
-        Transaction int,
-        Description varchar(255),
-        Photo varchar(255),
-        PRIMARY KEY (ID)
-    );
+  CREATE TABLE TermTransactions (
+      ID serial primary key,
+      CheckTermID int references CheckTerm(ID),
+      Transaction int,
+      Description varchar(255)
+      Photo varchar(255)
+  );
+
 ```
 
 1. Check
@@ -66,18 +65,18 @@
 ## Routes
 
 1. Check
-  1. User adds check
-  2. User deletes check
+    1. User adds check
+    2. User deletes check
 
 2. CheckTerm
-  1. Computer adds term
-  2. Computer modifies when user inputs transaction
-  3. Computer fetches CheckTerm
+    1. Computer adds term
+    2. Computer modifies when user inputs transaction
+    3. Computer fetches CheckTerm
 
 3. Transactions
-  1. User adds transaction
-  2. User fetches transactions
-  3. User deletes transactions
+    1. User adds transaction
+    2. User fetches transactions
+    3. User deletes transactions
 
 ## Report Feature
 
@@ -99,4 +98,3 @@ Twenty | Thirty| Fifty | Remaining
 600.00       | 54.23 | 100.10 | 754.23
 
 ```
-

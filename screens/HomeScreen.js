@@ -36,7 +36,7 @@ class HomeScreen extends React.Component {
   };
 
   sendCheck() {
-    this.props.dispatch(actions.addCheck(this.state.amount, this.state.description))
+    this.props.dispatch(actions.getCheck());
   }
 
   render() {
@@ -85,12 +85,12 @@ class HomeScreen extends React.Component {
                   placeholder=" rent "
                   onChangeText={(text) => this.setState({description: text})}
                 />
-                <Text> Photo : </Text>
+              <Text> Picture : </Text>
                 <TextInput
                   type="number"
                   style={{height: 35, width: 200, textAlign: 'center'}}
                   placeholder=" picture "
-                  onChangeText={(text) => this.setState({photo: text})}
+                  onChangeText={(text) => this.setState({picture: text})}
                 />
                 <Text> Reoccuring : </Text>
                 <TextInput

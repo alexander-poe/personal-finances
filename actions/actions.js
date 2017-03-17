@@ -1,4 +1,26 @@
-export const addCheck = (amount, description, photo, reoccuring) => {
+export const getCheckSuccess = data => ({
+	type: 'get_check_success',
+	data
+})
+
+export const getCheck = () => {
+	return dispatch =>  {
+		return fetch('http://localhost:8080/checks')
+			.then(res => {
+				return res.json()
+			}).then(res => {
+				console.log(res)
+				if (!res) return dispatch(getCheckSuccess([]))
+				return dispatch(getCheckSuccess(res))
+			})
+			.catch(e => {
+				console.error(e)
+			})
+    }
+}
+
+
+export const addCheck = (amount, description, picture, reoccuring) => {
   return dispatch => {
   	return fetch('http://localhost:8080/checks',
 		{
@@ -6,7 +28,7 @@ export const addCheck = (amount, description, photo, reoccuring) => {
 			body: JSON.stringify({
 				amount,
 				description,
-				photo,
+				picture,
 				reoccuring
 			}),
 			headers: { "Content-Type" : "application/json" }

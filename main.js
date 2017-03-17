@@ -1,5 +1,8 @@
 import Expo from 'expo';
+import thunk from 'redux-thunk';
 import React from 'react';
+import { Provider } from 'react-redux';
+import store from './state/store'
 import {
   AppRegistry,
   Platform,
@@ -45,18 +48,20 @@ class AppContainer extends React.Component {
   render() {
     if (this.state.appIsReady) {
       return (
-        <View style={styles.container}>
-          <NavigationProvider router={Router}>
-            <StackNavigation
-              id="root"
-              initialRoute={Router.getRoute('rootNavigation')}
-            />
-          </NavigationProvider>
+        <Provider store={store}>
+          <View style={styles.container}>
+            <NavigationProvider router={Router}>
+              <StackNavigation
+                id="root"
+                initialRoute={Router.getRoute('rootNavigation')}
+              />
+            </NavigationProvider>
 
-          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-          {Platform.OS === 'android' &&
-            <View style={styles.statusBarUnderlay} />}
-        </View>
+            {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+            {Platform.OS === 'android' &&
+              <View style={styles.statusBarUnderlay} />}
+          </View>
+        </Provider>
       );
     } else {
       return <Expo.Components.AppLoading />;

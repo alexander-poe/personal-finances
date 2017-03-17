@@ -1,5 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux'
+import { AppRegistry, NavigatorIOS } from 'react-native'
+import * as actions from '../actions/actions'
 import {
+  Button,
   Image,
   Linking,
   Platform,
@@ -14,14 +18,29 @@ import {
 import { MonoText } from '../components/StyledText';
 
 
-export default class HomeScreen extends React.Component {
+class HomeScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      amount: 0,
+      description: '',
+      picture: '',
+      reoccuring: false
+    }
+    this.sendCheck = this.sendCheck.bind(this);
+  }
   static route = {
     navigationBar: {
       visible: false,
     },
   };
 
+  sendCheck() {
+    this.props.dispatch(actions.addCheck(this.state.amount, this.state.description))
+  }
+
   render() {
+    console.log(this.state.amount)
     return (
       <View style={styles.container}>
         <ScrollView
@@ -52,17 +71,42 @@ export default class HomeScreen extends React.Component {
                 styles.homeScreenFilename,
               ]}>
               <MonoText style={styles.codeHighlightText}>
+                <Text> Amount : </Text>
                 <TextInput
                   type="number"
                   style={{height: 35, width: 200, textAlign: 'center'}}
                   placeholder="$ 00.00"
-                  onChangeText={(text) => this.setState({text})}
+                  onChangeText={(text) => this.setState({amount: text})}
+                />
+                <Text> Description : </Text>
+                <TextInput
+                  type="number"
+                  style={{height: 35, width: 200, textAlign: 'center'}}
+                  placeholder=" rent "
+                  onChangeText={(text) => this.setState({description: text})}
+                />
+                <Text> Photo : </Text>
+                <TextInput
+                  type="number"
+                  style={{height: 35, width: 200, textAlign: 'center'}}
+                  placeholder=" picture "
+                  onChangeText={(text) => this.setState({photo: text})}
+                />
+                <Text> Reoccuring : </Text>
+                <TextInput
+                  type="number"
+                  style={{height: 35, width: 200, textAlign: 'center'}}
+                  placeholder=" yes no "
+                  onChangeText={(text) => this.setState({reoccuring: text})}
                 />
               </MonoText>
-            </View>
-            <View
-              style={{width: 300, height: 400, backgroundColor: 'grey'}}>
-
+              <Button
+                onPress={this.sendCheck}
+                style={{height: 35, width: 75, textAlign: 'center'}}
+                title="Submit"
+                color="#841584"
+                accessibilityLabel="Submit"
+              />
             </View>
           </View>
         </ScrollView>
@@ -202,3 +246,5 @@ const styles = StyleSheet.create({
     color: '#2e78b7',
   },
 });
+
+export default connect()(HomeScreen);

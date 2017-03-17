@@ -2,7 +2,7 @@
   "name": "finances",
   "version": "0.0.0",
   "description": "Hello Exponent!",
-  "author": null,
+  "author": "Alex Poe",
   "main": "main.js",
   "scripts": {
     "test": "node node_modules/jest/bin/jest.js"
@@ -21,10 +21,13 @@
     "express": "^4.15.2",
     "knex": "^0.12.8",
     "pg": "^6.1.4",
-    "react": "~15.4.0",
-    "react-native": "https://github.com/exponent/react-native/archive/sdk-14.0.0.tar.gz",
+    "react": "^15.4.2",
+    "react-native": "0.40.0",
     "react-native-textinput-effects": "^0.3.0",
-    "react-native-vector-icons": "^4.0.0"
+    "react-native-vector-icons": "^4.0.0",
+    "react-redux": "^5.0.3",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "jest-expo": "~0.2.1"

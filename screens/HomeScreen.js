@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import { AppRegistry, NavigatorIOS } from 'react-native'
 import * as actions from '../actions/actions'
 import {
   Button,
@@ -17,7 +18,7 @@ import {
 import { MonoText } from '../components/StyledText';
 
 
-export default class HomeScreen extends React.Component {
+class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -35,7 +36,7 @@ export default class HomeScreen extends React.Component {
   };
 
   sendCheck() {
-
+    this.props.dispatch(actions.addCheck(this.state.amount, this.state.description))
   }
 
   render() {
@@ -245,3 +246,5 @@ const styles = StyleSheet.create({
     color: '#2e78b7',
   },
 });
+
+export default connect()(HomeScreen);

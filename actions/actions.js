@@ -1,4 +1,4 @@
-export const addSavingsGoal = (amount, description, photo, reoccuring) => {
+export const addCheck = (amount, description, photo, reoccuring) => {
   return dispatch => {
   	return fetch('http://localhost:8080/checks',
 		{

@@ -20,14 +20,13 @@ app.get('/checks', (req, res) => {
     return res.status(200).json({id})
   })
 })
-
-
 //need ID from post
 // maybe make reference id in datatable the amount combined with the date deposited.
 app.post('/checks', (req, res) => {
   let twenty = req.body.amount * .2
   let thirty = req.body.amount * .3
   let fifty = req.body.amount * .5
+  var checkid = 20;
   knex.insert({
     amount: req.body.amount,
     datedeposited: new Date(),
@@ -37,7 +36,13 @@ app.post('/checks', (req, res) => {
   }).into('checks').then(id => {
     return id
   }).then(id => {
+    return knex('checks').select('id').then(id => {
+      return id[id.length-1].id;
+    })
+  }).then(id => {
+    console.log(id)
   knex.insert({
+    checkid: id,
     twenty,
     thirty,
     fifty

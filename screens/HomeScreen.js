@@ -36,6 +36,7 @@ class HomeScreen extends React.Component {
   };
 
   sendCheck() {
+    this.props.dispatch(actions.addCheckTerm(2, 2000, 3000, 10000))
     this.props.dispatch(actions.getCheck());
   }
 
@@ -112,11 +113,8 @@ class HomeScreen extends React.Component {
         </ScrollView>
 
         <View style={styles.tabBarInfoContainer}>
-
-
           <View
             style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-
           </View>
         </View>
       </View>

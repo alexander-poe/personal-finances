@@ -9,7 +9,6 @@ export const getCheck = () => {
 			.then(res => {
 				return res.json()
 			}).then(res => {
-				console.log(res)
 				if (!res) return dispatch(getCheckSuccess([]))
 				return dispatch(getCheckSuccess(res))
 			})
@@ -18,7 +17,6 @@ export const getCheck = () => {
 			})
     }
 }
-
 
 export const addCheck = (amount, description, picture, reoccuring) => {
   return dispatch => {
@@ -38,7 +36,33 @@ export const addCheck = (amount, description, picture, reoccuring) => {
 			}
 			return res
 		}).then(res => {
+      console.log('39', res)
 			console.log('post check success')
+		}).catch(e => {
+			console.error(e)
+		})
+    }
+}
+
+export const addCheckTerm = (checkid, twenty, thirty, fifty) => {
+  return dispatch => {
+  	return fetch('http://localhost:8080/checkterm',
+		{
+			method: "POST",
+			body: JSON.stringify({
+				checkid,
+				twenty,
+				thirty,
+				fifty
+			}),
+			headers: { "Content-Type" : "application/json" }
+		}).then(res => {
+			if (res.status >= 300) {
+				throw new Error(res.statusText)
+			}
+			return res
+		}).then(res => {
+			console.log('post checkterm success')
 		}).catch(e => {
 			console.error(e)
 		})

@@ -44,27 +44,29 @@ export const addCheck = (amount, description, picture, reoccuring) => {
     }
 }
 
-export const addCheckTerm = (checkid, twenty, thirty, fifty) => {
-  return dispatch => {
-  	return fetch('http://localhost:8080/checkterm',
-		{
-			method: "POST",
-			body: JSON.stringify({
-				checkid,
-				twenty,
-				thirty,
-				fifty
-			}),
-			headers: { "Content-Type" : "application/json" }
-		}).then(res => {
-			if (res.status >= 300) {
-				throw new Error(res.statusText)
-			}
-			return res
-		}).then(res => {
-			console.log('post checkterm success')
-		}).catch(e => {
-			console.error(e)
-		})
-    }
-}
+// moved function to server
+
+// export const addCheckTerm = (checkid, twenty, thirty, fifty) => {
+//   return dispatch => {
+//   	return fetch('http://localhost:8080/checkterm',
+// 		{
+// 			method: "POST",
+// 			body: JSON.stringify({
+// 				checkid,
+// 				twenty,
+// 				thirty,
+// 				fifty
+// 			}),
+// 			headers: { "Content-Type" : "application/json" }
+// 		}).then(res => {
+// 			if (res.status >= 300) {
+// 				throw new Error(res.statusText)
+// 			}
+// 			return res
+// 		}).then(res => {
+// 			console.log('post checkterm success')
+// 		}).catch(e => {
+// 			console.error(e)
+// 		})
+//     }
+// }

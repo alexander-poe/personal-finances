@@ -41,4 +41,3 @@ export const addCheck = (amount, description, picture, reoccuring) => {
 			console.error(e)
 		})
     }
-}

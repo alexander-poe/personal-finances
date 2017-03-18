@@ -24,7 +24,7 @@
       ID serial primary key,
       CheckTermID int references CheckTerm(ID),
       Transaction int,
-      Description varchar(255)
+      Description varchar(255),
       Photo varchar(255)
   );
 

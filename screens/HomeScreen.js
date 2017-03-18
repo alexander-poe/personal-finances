@@ -36,7 +36,7 @@ class HomeScreen extends React.Component {
   };
 
   sendCheck() {
-    this.props.dispatch(actions.addCheck(2000, 'microsoft', 'awesomejob'))
+    this.props.dispatch(actions.addCheck(this.state.amount, this.state.description))
   }
 
   render() {

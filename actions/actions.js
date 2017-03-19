@@ -18,6 +18,28 @@ export const getCheck = () => {
     }
 }
 
+export const deleteCheck = (id) => {
+  return dispatch => {
+  	return fetch('http://localhost:8080/checks',
+		{
+			method: "DELETE",
+			body: JSON.stringify({
+				id
+			}),
+			headers: { "Content-Type" : "application/json" }
+		}).then(res => {
+			if (res.status >= 300) {
+				throw new Error(res.statusText)
+			}
+			return res
+		}).then(res => {
+			console.log('delete check success')
+		}).catch(e => {
+			console.error(e)
+		})
+    }
+}
+
 export const addCheck = (amount, description, picture, reoccuring) => {
   return dispatch => {
   	return fetch('http://localhost:8080/checks',
@@ -40,4 +62,4 @@ export const addCheck = (amount, description, picture, reoccuring) => {
 		}).catch(e => {
 			console.error(e)
 		})
-    }
+   }

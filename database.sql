@@ -9,7 +9,7 @@ CREATE TABLE Checks (
 
 CREATE TABLE CheckTerm (
     ID serial primary key,
-    CheckID int references CHECKS(ID),
+    CheckID int references CHECKS(ID, DateDeposited),
     Twenty int,
     Thirty int,
     Fifty int

@@ -21,8 +21,6 @@ app.get('/checks', (req, res) => {
   })
 })
 
-//need ID from post
-// maybe make reference id in datatable the amount combined with the date deposited.
 app.post('/checks', (req, res) => {
   let twenty = req.body.amount * .2
   let thirty = req.body.amount * .3

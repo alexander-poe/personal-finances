@@ -40,7 +40,6 @@ app.post('/checks', (req, res) => {
       return id[id.length-1].id;
     })
   }).then(id => {
-    console.log(id)
   knex.insert({
     checkid: id,
     twenty,
@@ -126,37 +125,19 @@ app.post('/termtransactions', (req, res) => {
         return id
       })
   }).then(id => {
-    let twenty = id[0].twenty
-    let thirty = id[0].thirty
-    let fifty = id[0].fifty
-    if (req.body.account === 'twenty') {
-      let newBal = twenty - req.body.transaction
-      knex('checkterm').where({
-        id: req.body.checktermid
-      }).update({
-        twenty: newBal,
-      }).then(id => {
-        return id;
-      })
-    } else if (req.body.account === 'thirty') {
-      let newBal = thirty - req.body.transaction
-      knex('checkterm').where({
-        id: req.body.checktermid
-      }).update({
-        thirty: newBal,
-      }).then(id => {
-        return id;
-      })
-    } else if (req.body.account === 'fifty') {
-      let newBal = fifty - req.body.transaction
-      knex('checkterm').where({
-        id: req.body.checktermid
-      }).update({
-        fifty: newBal,
-      }).then(id => {
-        return id;
-      })
+    let accounts = {
+      twenty: id[0].twenty,
+      thirty: id[0].thirty,
+      fifty: id[0].fifty
     }
+    let newBal = accounts[req.body.account] - req.body.transaction
+    knex('checkterm').where({
+      id: req.body.checktermid
+    }).update({
+      [req.body.account]: newBal,
+    }).then(id => {
+      return id;
+    })
   }).then(id => {
     return res.status(201).json({id})
   }).catch(e => {

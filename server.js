@@ -20,7 +20,8 @@ app.get('/checks', (req, res) => {
     return res.status(200).json({id})
   })
 })
-
+//need ID from post
+// maybe make reference id in datatable the amount combined with the date deposited.
 app.post('/checks', (req, res) => {
   let twenty = req.body.amount * .2
   let thirty = req.body.amount * .3
@@ -109,12 +110,54 @@ app.get('/termtransactions', (req, res) => {
 })
 
 app.post('/termtransactions', (req, res) => {
+  console.log(req.body.transaction, req.body.checktermid)
   knex.insert({
     checktermid: req.body.checktermid,
+    account: req.body.account,
+    transactiondate: new Date(),
     transaction: req.body.transaction,
     description: req.body.description,
     photo: req.body.photo
   }).into('termtransactions').then(id => {
+      return knex('checkterm')
+      .where({id: req.body.checktermid})
+      .select('twenty', 'thirty', 'fifty')
+      .then(id => {
+        return id
+      })
+  }).then(id => {
+    let twenty = id[0].twenty
+    let thirty = id[0].thirty
+    let fifty = id[0].fifty
+    if (req.body.account === 'twenty') {
+      let newBal = twenty - req.body.transaction
+      knex('checkterm').where({
+        id: req.body.checktermid
+      }).update({
+        twenty: newBal,
+      }).then(id => {
+        return id;
+      })
+    } else if (req.body.account === 'thirty') {
+      let newBal = thirty - req.body.transaction
+      knex('checkterm').where({
+        id: req.body.checktermid
+      }).update({
+        thirty: newBal,
+      }).then(id => {
+        return id;
+      })
+    } else if (req.body.account === 'fifty') {
+      let newBal = fifty - req.body.transaction
+      knex('checkterm').where({
+        id: req.body.checktermid
+      }).update({
+        fifty: newBal,
+      }).then(id => {
+        return id;
+      })
+    }
+  }).then(id => {
     return res.status(201).json({id})
   }).catch(e => {
     console.error(e)

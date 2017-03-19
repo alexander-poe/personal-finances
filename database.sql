@@ -15,10 +15,12 @@ CREATE TABLE CheckTerm (
     Fifty int
  );
 
-CREATE TABLE TermTransactions (
-    ID serial primary key,
-    CheckTermID int references CheckTerm(ID),
-    Transaction int,
-    Description varchar(255),
-    Photo varchar(255)
-);
+ CREATE TABLE TermTransactions (
+     ID serial primary key,
+     CheckTermID int references CheckTerm(ID),
+     TransactionDate DATE,
+     Account varchar (255),
+     Transaction int,
+     Description varchar(255),
+     Photo varchar(255)
+ );

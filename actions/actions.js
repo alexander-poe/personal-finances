@@ -61,7 +61,6 @@ export const deleteCheck = (id) => {
     }
 }
 
-
 export const addCheck = (amount, description, picture, reoccuring) => {
   return dispatch => {
   	return fetch('http://localhost:8080/checks',
@@ -80,7 +79,6 @@ export const addCheck = (amount, description, picture, reoccuring) => {
 			}
 			return res
 		}).then(res => {
-      console.log('39', res)
 			console.log('post check success')
 		}).catch(e => {
 			console.error(e)

@@ -84,6 +84,11 @@
 
 1. Photo on check
 
+1. User adds transaction
+    1. Transaction is posted to DB
+    2. get checkterm amount
+    3. subtract transaction from appropriate checkterm ammount and modify the checkterm. 
+
 ## Report Feature
 
 ```

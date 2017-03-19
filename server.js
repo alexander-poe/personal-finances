@@ -110,12 +110,17 @@ app.get('/termtransactions', (req, res) => {
 })
 
 app.post('/termtransactions', (req, res) => {
+  console.log(req.body.transaction, req.body.checktermid)
   knex.insert({
     checktermid: req.body.checktermid,
+    account: req.body.account,
+    transactiondate: new Date(),
     transaction: req.body.transaction,
     description: req.body.description,
     photo: req.body.photo
   }).into('termtransactions').then(id => {
+
+  }).then(id => {
     return res.status(201).json({id})
   }).catch(e => {
     console.error(e)

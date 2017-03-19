@@ -36,7 +36,7 @@ class HomeScreen extends React.Component {
   };
 
   sendCheck() {
-    this.props.dispatch(actions.deleteCheck(3))
+    this.props.dispatch(actions.addTermTransaction(1, 'twenty', 500, 'description', 'life.png'))
   }
 
   render() {

@@ -23,11 +23,12 @@
   CREATE TABLE TermTransactions (
       ID serial primary key,
       CheckTermID int references CheckTerm(ID),
+      TransactionDate DATE,
+      Account varchar (255),
       Transaction int,
       Description varchar(255),
       Photo varchar(255)
   );
-
 ```
 
 1. Check
@@ -58,6 +59,7 @@
         1. Amount
         2. Description
         3. Photo
+        4. Account => 20 / 30 / 50
     2. Generated Automatically
         1. ID
         2. CheckTermID  
@@ -80,16 +82,7 @@
 
 ## TODO (feature based)   
 
-1. Create Store, Reducer and Action
-
-1. Add check feature
-    1. user inputs
-        1. Amount
-        2. Description
-        3. Picture
-        4. Reoccuring (y / n)
-    2. input dispatched in action
-    3. action calls server route /check  
+1. Photo on check
 
 ## Report Feature
 

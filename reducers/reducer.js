@@ -1,7 +1,9 @@
-import { NavigationReducer } from '@expo/ex-navigation';
-import { combineReducers } from 'redux';
+import { NavigationReducer } from '@expo/ex-navigation'
+import checks from './checks'
+import { combineReducers } from 'redux'
 
 
 export default combineReducers({
-  navigation: NavigationReducer
-});
+  navigation: NavigationReducer,
+  checks
+})

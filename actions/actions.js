@@ -1,5 +1,7 @@
+export const get_check_success = 'get_check_success';
+
 export const getCheckSuccess = data => ({
-	type: 'get_check_success',
+	type: get_check_success,
 	data
 })
 
@@ -9,6 +11,7 @@ export const getCheck = () => {
 			.then(res => {
 				return res.json()
 			}).then(res => {
+				console.log(res)
 				if (!res) return dispatch(getCheckSuccess([]))
 				return dispatch(getCheckSuccess(res))
 			})

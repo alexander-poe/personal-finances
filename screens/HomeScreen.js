@@ -35,12 +35,28 @@ class HomeScreen extends React.Component {
     },
   };
 
+  componentDidMount() {
+    this.props.dispatch(actions.getCheck());
+  }
+
   sendCheck() {
     this.props.dispatch(actions.addTermTransaction(1, 'twenty', 50, 'description', 'life.png'))
   }
 
   render() {
-    console.log(this.state.amount)
+    const allRenderedChecks =
+             this.props.checks ?
+                this.props.checks.checks.map((check) => {
+                  console.log(check.description)
+                  return (
+                  <View>
+                    <Text>Check:{check.description}</Text>
+                    <Text>Amount:{check.amount}</Text>
+                    <Text>DepositedDate:{check.datedeposited}</Text>
+                  </View>
+                  )
+                }) : null
+    console.log(allRenderedChecks)
     return (
       <View style={styles.container}>
         <ScrollView
@@ -51,6 +67,8 @@ class HomeScreen extends React.Component {
             source={require('../assets/images/image!background.jpg')}
             style={{flex: 1, width: null, height: null}}
           />
+
+        {allRenderedChecks}
 
           <View style={styles.welcomeContainer}>
             <Image
@@ -244,4 +262,8 @@ const styles = StyleSheet.create({
   },
 });
 
-export default connect()(HomeScreen);
+const mapStateToProps = state => ({
+  checks: state.checks
+})
+
+export default connect(mapStateToProps)(HomeScreen);
